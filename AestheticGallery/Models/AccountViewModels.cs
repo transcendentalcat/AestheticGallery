@@ -65,6 +65,10 @@ namespace AestheticGallery.Models
     public class RegisterViewModel
     {
         [Required]
+        [Display(Name = "Имя пользователя")]
+        public string UserName { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }

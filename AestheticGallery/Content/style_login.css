@@ -1,0 +1,334 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'Noto Sans', sans-serif;
+	overflow: hidden;
+
+}
+
+.space {
+	height: 60px;
+}
+
+.wrapper {
+	display: flex;
+	flex-direction: column;
+}
+/* Панель навигации */
+
+header {
+	width: 100%;
+	z-index: 5;
+	/*height: 100vh;
+	background: url(1_2.jpg) no-repeat 50% 50%;
+	background-size: cover;*/
+}
+
+.logo {
+	position: fixed;
+	float: left;
+	margin: 4px 36px;
+	color: #fff;
+	font-size: 30px;
+	font-family: 'Crete Round', serif;
+	font-weight: bold;
+}
+
+.logo a {
+ 	text-decoration: none;
+ 	color: #fff;
+}
+
+.menu {
+	float: right;
+	
+}
+
+nav {
+	position: fixed;
+	width: 100%;
+	box-sizing: border-box;
+	padding: 5px;
+	z-index: 5;
+	transition: .5s;
+}
+
+nav ul {
+	display: flex;
+	justify-content: flex-end;
+	list-style: none;
+	background: rgba(0, 0, 0, 0);
+	overflow: hidden;
+	color: #fff;
+	padding: 0;
+	text-align: center;
+	margin: 0;
+	transition: 1s;
+}
+
+nav.black {
+	background: rgba(0, 0, 0, 0.8);
+}
+
+
+nav.black .logo a {
+	color: #fff;
+}
+
+nav.black ul li a {
+	color: #fff;
+}
+
+nav ul li {
+	padding: 14px 10px;
+	flex-basis: 25%;
+}
+
+nav ul li a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 16px;
+	padding: 6px 12px;
+	transition: .3s;
+}
+
+.menu-icon {
+	width: 100%;
+	text-align: right;
+	box-sizing: border-box;
+	padding: 10px 24px;
+	cursor: pointer;
+	color: #fff;
+	z-index: 10;
+	display: none;
+}
+
+@media screen and (max-width: 710px) {
+	
+	.logo {
+		position: fixed;
+		top: 0;
+		margin-top: 10px;
+		color: #fff;
+	}
+	
+	.menu {
+		float: none;
+	}
+
+	nav {
+		background: rgba(0, 0, 0, 0.8);
+	}
+
+	nav.black {
+		background: rgba(0, 0, 0, 0.8);
+	}
+
+	header nav ul {
+		max-height: 0px;
+		flex-direction: column;
+	}	
+
+	nav.black ul {
+		color: #fff;
+	}
+
+	nav.black ul li a {
+		color: #fff;
+	}
+
+	.showing {
+		max-height: 20em;
+	}
+
+	nav ul li {
+		box-sizing: border-box;
+		width: 100%;
+		padding: 24px 0;
+		text-align: center;
+	}
+
+	nav ul li a {
+		color: #fff;
+	}
+
+	.menu-icon {
+		display: block;
+	}
+
+	nav ul li:hover {
+	background: #ea001e;
+	transition: .3s;
+	}
+
+	nav ul li a:hover {
+	background: transparent;
+	
+}
+}
+
+nav ul li a:hover {
+	background: #ea001e;
+	color: #fff;
+	border-radius: 6px;
+	transition: .3s;
+}
+
+/* Слайдер*/
+
+.shadow {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.5);
+	z-index: 4;
+	color: #fff;
+}
+
+.shadow h1 {
+	font-size: 70pt;
+}
+
+.shadow p {
+	text-transform: uppercase;
+	margin: -30pt;
+}
+
+.slider {
+	position: relative;
+}
+
+.slider #photo {
+	position: relative;
+	height: calc(100vw / 2);
+}
+
+#photo img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	opacity: 0;
+	transition: opacity 2s; //cubic-bezier(0.770, 0.000, 0.175, 1.000);
+}
+
+.control {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 20;
+	height: calc(100vw / 2);
+}
+
+#pr_button {
+	position: absolute;;
+	top: 50%;
+	left: 5%;
+	z-index: 5;
+}
+
+#n_button {
+	position: absolute;;
+	top: 50%;
+	right: 5%;
+	z-index: 5;
+}
+
+#prev, #next {
+	margin: 0;
+	max-width: 30pt;
+	max-height: 30pt;
+	opacity: 0.2;
+	transiton-property: opacity scale;
+	transition-duration: .5s;
+}
+
+#prev:hover {
+	opacity: 0.6;
+	transform: scale(1.1); 
+}
+
+
+#next:hover {
+	opacity: 0.6;
+	transform: scale(1.1);
+}
+
+#photo {
+	z-index: -10;
+}
+
+#photo .showed {
+	opacity: 1;
+}
+
+/* LOG IN PAGE */
+
+.form-wrapper {
+	height: 100vh;
+	width: 100vw;
+	background: url("89e6e528f0641c21dc4004e79d1f2231.jpg") 50% 50% no-repeat;
+	background-size: cover;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.login-wrap {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	border-radius: 5px;
+	padding: 3em;
+}
+
+.form-wrapper h2 {
+	font-family: Source Sans Pro;
+	font-weight: lighter;
+	color: #fff;
+	font-size: 50px;
+	text-align: center;
+}
+
+.form-wrapper .input {
+	display: block;
+	width: 320px;
+	height: 50px;
+	background: rgba(0, 0, 0, 0.3);
+	outline: none;
+	border: 1px solid rgba(0, 0, 0, 0.5);
+	font-family: Source Sans Pro;
+	font-weight: lighter;
+	color: #fff;
+	font-size: 14px;
+	margin-bottom: 10px;
+	padding-left: 10px;
+	border-radius: 5px;
+}
+
+.form-wrapper .login {
+	display: block;
+	width: 332px;
+	height: 50px;
+	font-size: 16px;
+	background: #000;
+	font-weight: lighter;
+	color: #fff;
+	border-radius: 5px;
+	border: 0px;
+}
+
+.form-wrapper .registration {
+	margin-top: 7px;
+	background: #8f67c7;
+}
+
+.light-text {
+    color: #fff;
+    font-size: 14px;
+}
