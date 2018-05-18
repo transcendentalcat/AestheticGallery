@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.DataTransferObjects
 {
-    class AlbumDto
+    public class AlbumDto
     {
         public int Id { get; set; }
 

@@ -19,45 +19,45 @@ namespace Data_Access_Layer.Repositories
             this.db = context;
         }
 
-        public async Task CreateAsync(Comment item)
+        public void Create(Comment item)
         {
             db.Comments.Add(item);
-            await db.SaveChangesAsync();
+            db.SaveChanges();
         }
 
-        public async Task DeleteAsync(int id)
+        public void Delete(int id)
         {
-            var comment = await db.Comments.FirstOrDefaultAsync(f => f.Id == id);
+            var comment = db.Comments.FirstOrDefault(f => f.Id == id);
             if (comment != null)
                 db.Entry(comment).State = EntityState.Deleted;
-            await db.SaveChangesAsync();
+            db.SaveChanges();
         }
 
-        public async Task<IEnumerable<Comment>> FindAsync(Func<Comment, bool> predicate)
+        public IEnumerable<Comment> Find(Func<Comment, bool> predicate)
         {
             var result = new List<Comment>();
-            //result = await db.Comments.Where(predicate).ToListAsync();
+            result = db.Comments.Where(predicate).ToList();
             return result;
         }
 
-        public async Task<IEnumerable<Comment>> GetAllAsync()
+        public IEnumerable<Comment> GetAll()
         {
             var result = new List<Comment>();
-            result = await db.Comments.ToListAsync();
+            result = db.Comments.ToList();
             return result;
         }
 
-        public async Task<Comment> GetAsync(int id)
+        public Comment Get(int id)
         {
             Comment result = null;
-            result = await db.Comments.FirstOrDefaultAsync(f => f.Id == id);
+            result = db.Comments.FirstOrDefault(f => f.Id == id);
             return result;
         }
 
-        public async Task UpdateAsync(Comment item)
+        public void Update(Comment item)
         {
             db.Entry(item).State = EntityState.Modified;
-            await db.SaveChangesAsync();
+            db.SaveChanges();
         }
     }
 }

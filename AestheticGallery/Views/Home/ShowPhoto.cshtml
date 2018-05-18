@@ -1,0 +1,15 @@
+﻿@model AestheticGallery.Models.ViewModels.PhotoViewModel;
+@{
+    ViewBag.Title = "ShowPhoto";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ShowPhoto</h2>
+
+@if (Model.PhotoFile != null)
+{
+    <div class="photo-display">
+        <img width="800" src="@Url.Action("GetImage", "Photo", new { id = Model.PhotoId })" />
+    </div>
+}
+

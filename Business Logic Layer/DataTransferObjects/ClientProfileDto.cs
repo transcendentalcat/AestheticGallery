@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.DataTransferObjects
 {
-    class ClientProfileDto
+    public class ClientProfileDto
     {
         public int Id { get; set; }
 

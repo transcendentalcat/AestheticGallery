@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace BusinessLogicLayer.DataTransferObjects
+namespace AestheticGallery.Models.ViewModels
 {
-    public class PhotoDto
+    public class PhotoViewModel
     {
         public int Id { get; set; }
 

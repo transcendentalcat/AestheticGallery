@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Interfaces
 {
-    interface IPhotoService
+    public interface IPhotoService
     {
-        Task<PhotoDto> GetAsync(int id);
+       PhotoDto Get(int id);
     }
 }

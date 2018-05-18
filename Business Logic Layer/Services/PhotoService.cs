@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
-    class PhotoService : IPhotoService
+    public class PhotoService : IPhotoService
     {
         IUnitOfWork db { get; set; }
 
@@ -18,7 +18,7 @@ namespace BusinessLogicLayer.Services
             db = uow;
         }
 
-        public async Task<PhotoDto> GetAsync(int id)
+        public PhotoDto Get(int id)
         {
             //if (id == null)
             //    throw new ValidationException("Не установлено id телефона", "");
@@ -26,6 +26,7 @@ namespace BusinessLogicLayer.Services
             //if (phone == null)
             //    throw new ValidationException("Телефон не найден", "");
 
-            return new PhotoDto { Id = photo.Id, AlbumId = photo.AlbumId  };
+            return new PhotoDto { Id = photo.Id, AlbumId = photo.AlbumId, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title };
         }
+    }
 }

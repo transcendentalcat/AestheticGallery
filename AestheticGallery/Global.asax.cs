@@ -1,4 +1,9 @@
-﻿using System;
+﻿using BusinessLogicLayer.Infrastucure;
+using Ninject;
+using Ninject.Modules;
+using Ninject.Web.Mvc;
+using NLayerApp.WEB.Util;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -16,7 +21,12 @@ namespace AestheticGallery
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);          
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            NinjectModule photoInject = new PhotoInject();
+            NinjectModule serviceModule = new ServiceInject("DefaultConnection");
+            var kernel = new StandardKernel(photoInject, serviceModule);
+            DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }
     }
 }
