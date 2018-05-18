@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AestheticGallery", "Aesthet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AestheticGallery.Tests", "AestheticGallery.Tests\AestheticGallery.Tests.csproj", "{2D772779-DEE1-4271-969E-2C8CE3256393}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data Access Layer", "Data Access Layer\Data Access Layer.csproj", "{AB722C6D-C3A7-4EA6-8A98-3BBA8856F77B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business Logic Layer", "Business Logic Layer\Business Logic Layer.csproj", "{39B160C8-C7D2-41D0-BA7A-FF236889E5C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{2D772779-DEE1-4271-969E-2C8CE3256393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D772779-DEE1-4271-969E-2C8CE3256393}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D772779-DEE1-4271-969E-2C8CE3256393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB722C6D-C3A7-4EA6-8A98-3BBA8856F77B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB722C6D-C3A7-4EA6-8A98-3BBA8856F77B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB722C6D-C3A7-4EA6-8A98-3BBA8856F77B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB722C6D-C3A7-4EA6-8A98-3BBA8856F77B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39B160C8-C7D2-41D0-BA7A-FF236889E5C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39B160C8-C7D2-41D0-BA7A-FF236889E5C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39B160C8-C7D2-41D0-BA7A-FF236889E5C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39B160C8-C7D2-41D0-BA7A-FF236889E5C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
