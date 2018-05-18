@@ -4,20 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Data_Access_Layer.Entities
+namespace BusinessLogicLayer.DataTransferObjects
 {
-    public class Comment
+    class CommentDto
     {
         public int Id { get; set; }
 
         public int PhotoId { get; set; }
 
-        public /*virtual*/ Photo Photo { get; set; }
-
         public int ClientProfileId { get; set; }
-
-        public ClientProfile ClientProfile { get; set; }
 
         public string Body { get; set; }
     }
 }
+

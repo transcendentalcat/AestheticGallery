@@ -19,46 +19,45 @@ namespace Data_Access_Layer.Repositories
             this.db = context;
         }
 
-        public async Task CreateAsync(ClientProfile item)
+        public void Create(ClientProfile item)
         {
             db.ClientProfiles.Add(item);
-            await db.SaveChangesAsync();
+            db.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public void Delete(int id)
         {
-            var clientProfile = await db.ClientProfiles.FirstOrDefaultAsync(f => f.Id == id);
+            var clientProfile = db.ClientProfiles.FirstOrDefault(f => f.Id == id);
             if (clientProfile != null)
                 db.Entry(clientProfile).State = EntityState.Deleted;
-            await db.SaveChangesAsync();
+            db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<ClientProfile>> FindAsync(Func<ClientProfile, bool> predicate)
+        public IEnumerable<ClientProfile> Find(Func<ClientProfile, bool> predicate)
         {
             var result = new List<ClientProfile>();
-            //result = await db.ClientProfiles.Where(predicate).ToListAsync();
+            result = db.ClientProfiles.Where(predicate).ToList();
             return result;
         }
 
-        public async Task<IEnumerable<ClientProfile>> GetAllAsync()
+        public IEnumerable<ClientProfile> GetAll()
         {
             var result = new List<ClientProfile>();
-            result = await db.ClientProfiles.ToListAsync();
+            result = db.ClientProfiles.ToList();
             return result;
         }
 
-        public async Task<ClientProfile> GetAsync(int id)
+        public ClientProfile Get(int id)
         {
             ClientProfile result = null;
-            result = await db.ClientProfiles.FirstOrDefaultAsync(f => f.Id == id);
+            result = db.ClientProfiles.FirstOrDefault(f => f.Id == id);
             return result;
         }
 
-        public async Task UpdateAsync(ClientProfile item)
+        public void Update(ClientProfile item)
         {
             db.Entry(item).State = EntityState.Modified;
-            await db.SaveChangesAsync();
+            db.SaveChanges();
         }
     }
 }
-

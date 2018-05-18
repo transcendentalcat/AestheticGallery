@@ -19,45 +19,45 @@ namespace Data_Access_Layer.Repositories
             this.db = context;
         }
 
-        public async Task CreateAsync(Like item)
+        public void Create(Like item)
         {
             db.Likes.Add(item);
-            await db.SaveChangesAsync();
+            db.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public void Delete(int id)
         {
-            var like = await db.Likes.FirstOrDefaultAsync(f => f.Id == id);
+            var like = db.Likes.FirstOrDefault(f => f.Id == id);
             if (like != null)
                 db.Entry(like).State = EntityState.Deleted;
-            await db.SaveChangesAsync();
+            db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Like>> FindAsync(Func<Like, bool> predicate)
+        public IEnumerable<Like> Find(Func<Like, bool> predicate)
         {
             var result = new List<Like>();
-            //result = await db.Likes.Where(predicate).ToListAsync();
+            result = db.Likes.Where(predicate).ToList();
             return result;
         }
 
-        public async Task<IEnumerable<Like>> GetAllAsync()
+        public IEnumerable<Like> GetAll()
         {
             var result = new List<Like>();
-            result = await db.Likes.ToListAsync();
+            result = db.Likes.ToList();
             return result;
         }
 
-        public async Task<Like> GetAsync(int id)
+        public Like Get(int id)
         {
             Like result = null;
-            result = await db.Likes.FirstOrDefaultAsync(f => f.Id == id);
+            result = db.Likes.FirstOrDefault(f => f.Id == id);
             return result;
         }
 
-        public async Task UpdateAsync(Like item)
+        public void Update(Like item)
         {
             db.Entry(item).State = EntityState.Modified;
-            await db.SaveChangesAsync();
+            db.SaveChanges();
         }
     }
 }

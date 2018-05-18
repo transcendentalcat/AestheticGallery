@@ -16,10 +16,7 @@ namespace AestheticGallery
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
-
-            // Initialize the product database.
-            //Database.SetInitializer(new PhotoDbInitializerr());
+            BundleConfig.RegisterBundles(BundleTable.Bundles);          
         }
     }
 }

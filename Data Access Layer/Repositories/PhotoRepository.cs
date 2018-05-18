@@ -19,45 +19,45 @@ namespace Data_Access_Layer.Repositories
             this.db = context;
         }
 
-        public async Task CreateAsync(Photo item)
+        public void Create(Photo item)
         {
             db.Photos.Add(item);
-            await db.SaveChangesAsync();
+            db.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public void Delete(int id)
         {
-            var photo = await db.Photos.FirstOrDefaultAsync(f => f.Id == id);
+            var photo = db.Photos.FirstOrDefault(f => f.Id == id);
             if (photo != null)
                 db.Entry(photo).State = EntityState.Deleted;
-            await db.SaveChangesAsync();
+            db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Photo>> FindAsync(Func<Photo, bool> predicate)
+        public IEnumerable<Photo> Find(Func<Photo, bool> predicate)
         {
             var result = new List<Photo>();
-            //result = await db.Photos.Where(predicate).ToListAsync();
+            result = db.Photos.Where(predicate).ToList();
             return result;
         }
 
-        public async Task<IEnumerable<Photo>> GetAllAsync()
+        public IEnumerable<Photo> GetAll()
         {
             var result = new List<Photo>();
-            result = await db.Photos.ToListAsync();
+            result = db.Photos.ToList();
             return result;
         }
 
-        public async Task<Photo> GetAsync(int id)
+        public Photo Get(int id)
         {
             Photo result = null;
-            result = await db.Photos.FirstOrDefaultAsync(f => f.Id == id);
+            result = db.Photos.FirstOrDefault(f => f.Id == id);
             return result;
         }
 
-        public async Task UpdateAsync(Photo item)
+        public void Update(Photo item)
         {
             db.Entry(item).State = EntityState.Modified;
-            await db.SaveChangesAsync();
+            db.SaveChanges();
         }
     }
 }

@@ -135,15 +135,15 @@ namespace Data_Access_Layer.DataContext
             var comments = new List<Comment>
             {
                 new Comment {
-                    PhotoID = 1,
+                    PhotoId = 1,
                     Body = "This is the first sample comment in the Adventure Works photo application"
                 },
                 new Comment {
-                    PhotoID = 1,
+                    PhotoId = 1,
                     Body = "This is the second sample comment in the Adventure Works photo application"
                 },
                 new Comment {
-                    PhotoID = 3,
+                    PhotoId = 3,
                     Body = "This is the third sample photo in the Adventure Works photo application"
                 }
             };

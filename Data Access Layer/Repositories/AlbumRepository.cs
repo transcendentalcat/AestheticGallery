@@ -19,45 +19,45 @@ namespace Data_Access_Layer.Repositories
             this.db = context;
         }
 
-        public async Task CreateAsync(Album item)
+        public void Create(Album item)
         {
-                db.Albums.Add(item);
-                await db.SaveChangesAsync();
+            db.Albums.Add(item);
+            db.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public void Delete(int id)
         {
-            var album = await db.Albums.FirstOrDefaultAsync(f => f.Id == id);
+            var album = db.Albums.FirstOrDefault(f => f.Id == id);
             if (album != null)
                 db.Entry(album).State = EntityState.Deleted;
-            await db.SaveChangesAsync();
+            db.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<Album>> FindAsync(Func<Album, bool> predicate)
+        public IEnumerable<Album> Find(Func<Album, bool> predicate)
         {
             var result = new List<Album>();
-            //result = await db.Albums.Where(predicate).ToListAsync();
+            result = db.Albums.Where(predicate).ToList();
             return result;
         }
 
-        public async Task<IEnumerable<Album>> GetAllAsync()
+        public IEnumerable<Album> GetAll()
         {
             var result = new List<Album>();
-            result = await db.Albums.ToListAsync();
+            result = db.Albums.ToList();
             return result;
         }
 
-        public async Task<Album> GetAsync(int id)
+        public Album Get(int id)
         {
             Album result = null;
-            result = await db.Albums.FirstOrDefaultAsync(f => f.Id == id);
+            result = db.Albums.FirstOrDefault(f => f.Id == id);
             return result;
         }
 
-        public async Task UpdateAsync(Album item)
+        public void Update(Album item)
         {            
-                db.Entry(item).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+            db.Entry(item).State = EntityState.Modified;
+            db.SaveChanges();
         }
     }
 }
