@@ -9,6 +9,9 @@ namespace NLayerApp.WEB.Util
         public override void Load()
         {
             Bind<IPhotoService>().To<PhotoService>();
+            Bind<IAlbumService>().To<AlbumService>();
+            Bind<ICommentService>().To<CommentService>();
+            Bind<IClientProfileService>().To<ClientProfileService>();
         }
     }
 }

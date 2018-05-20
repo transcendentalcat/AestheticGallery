@@ -11,32 +11,30 @@ using System.Threading.Tasks;
 
 namespace BusinessLogicLayer.Services
 {
-    public class PhotoService : IPhotoService
+    public class AlbumService : IAlbumService
     {
         IUnitOfWork db { get; set; }
 
-        public PhotoService(IUnitOfWork uow)
+        public AlbumService(IUnitOfWork uow)
         {
             db = uow;
         }
 
-        public PhotoDto GetPhoto(int id)
+        public AlbumDto GetAlbum(int id)
         {
             //if (id == null)
             //    throw new ValidationException("Не установлено id телефона", "");
-            var photo = db.Photos.Get(id);
+            var album = db.Albums.Get(id);
             //if (phone == null)
             //    throw new ValidationException("Телефон не найден", "");
 
-            return new PhotoDto { Id = photo.PhotoID, AlbumId = photo.AlbumID, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title, Likes = photo.Likes};
+            return new AlbumDto { Id = album.AlbumID, CreatedDate = album.CreatedDate, Description = album.Description, Title = album.Title, ClientProfileId = album.ClientProfileID };
         }
 
-        public IEnumerable<PhotoDto> GetPhotos()
+        public IEnumerable<AlbumDto> GetAlbums()
         {
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDto>()).CreateMapper();
-            return mapper.Map<IEnumerable<Photo>, List<PhotoDto>>(db.Photos.GetAll());
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Album, AlbumDto>()).CreateMapper();
+            return mapper.Map<IEnumerable<Album>, List<AlbumDto>>(db.Albums.GetAll());
         }
-
-        
     }
 }

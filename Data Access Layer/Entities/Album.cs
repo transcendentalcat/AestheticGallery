@@ -19,7 +19,7 @@ namespace Data_Access_Layer.Entities
         [DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
 
-        public int? ClientProfileID { get; set; }
+        public int ClientProfileID { get; set; }
 
         public virtual ClientProfile ClientProfile { get; set; }
 

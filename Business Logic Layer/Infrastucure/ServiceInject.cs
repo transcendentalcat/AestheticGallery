@@ -19,6 +19,7 @@ namespace BusinessLogicLayer.Infrastucure
         public override void Load()
         {
             Bind<IUnitOfWork>().To<EFUnitOfWork>().WithConstructorArgument(connectionString);
+
         }
     }
 }

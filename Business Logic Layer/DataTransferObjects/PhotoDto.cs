@@ -20,8 +20,8 @@ namespace BusinessLogicLayer.DataTransferObjects
 
         public DateTime CreatedDate { get; set; }
 
-        //public int ClientProfileId { get; set; }
-
         public int AlbumId { get; set; }
+
+        public int Likes { get; set; }
     }
 }

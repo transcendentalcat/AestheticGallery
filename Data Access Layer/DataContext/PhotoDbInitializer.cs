@@ -17,7 +17,7 @@ namespace Data_Access_Layer.DataContext
         {
             base.Seed(db);
 
-            var user = new ApplicationRole { Name = "user" };
+            /*var user = new ApplicationRole { Name = "user" };
             var admin = new ApplicationRole { Name = "admin" };
             var guest = new ApplicationRole { Name = "guest" };
 
@@ -25,7 +25,7 @@ namespace Data_Access_Layer.DataContext
             db.Roles.Add(guest);
             db.Roles.Add(admin);
 
-            db.SaveChanges();
+            db.SaveChanges();*/
 
             ClientProfile client1 = new ClientProfile
             { 
@@ -93,7 +93,7 @@ namespace Data_Access_Layer.DataContext
                     ImageMimeType = "image/jpeg",
                     CreatedDate = DateTime.Today.AddDays(-5),
                     AlbumID = 1,
-                    Likes = 23, 
+                    Likes = 23 
                 },
                  new Photo {
                     Title = "Фото 2",

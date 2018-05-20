@@ -45,19 +45,27 @@ namespace AestheticGallery.Controllers
             return db.ClientProfiles.Find(3).Name;
         }
 
-
-        public ActionResult ShowPhoto(int id)
+        public ActionResult GetPhoto(int id)
         {
-            var photoDto = photoService.Get(id);
+            var photoDto = photoService.GetPhoto(id);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
             var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
 
             return File(photo.PhotoFile, photo.ImageMimeType);
         }
 
+        public ActionResult ShowPhoto(int id)
+        {
+            ViewBag.Id = id;
+            var photoDto = photoService.GetPhoto(id);
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
+            var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
+            return View(photo);
+        }
+
         public string ShowPhotoTitle(int id)
         {
-            var photoDto = photoService.Get(id);
+            var photoDto = photoService.GetPhoto(id);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
             var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
 
