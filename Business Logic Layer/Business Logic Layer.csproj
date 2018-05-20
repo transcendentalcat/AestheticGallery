@@ -85,7 +85,6 @@
     <Compile Include="DataTransferObjects\AlbumDto.cs" />
     <Compile Include="DataTransferObjects\ClientProfileDto.cs" />
     <Compile Include="DataTransferObjects\CommentDto.cs" />
-    <Compile Include="DataTransferObjects\LikeDto.cs" />
     <Compile Include="DataTransferObjects\PhotoDto.cs" />
     <Compile Include="Infrastucure\ServiceInject.cs" />
     <Compile Include="Interfaces\IAlbumService.cs" />

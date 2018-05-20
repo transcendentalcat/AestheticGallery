@@ -9,7 +9,7 @@ using AestheticGallery.Controllers;
 
 namespace AestheticGallery.Tests.Controllers
 {
-    [TestClass]
+    /*[TestClass]
     public class HomeControllerTest
     {
         [TestMethod]
@@ -50,5 +50,5 @@ namespace AestheticGallery.Tests.Controllers
             // Assert
             Assert.IsNotNull(result);
         }
-    }
+    }*/
 }

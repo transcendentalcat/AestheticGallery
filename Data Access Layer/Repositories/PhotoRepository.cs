@@ -27,7 +27,7 @@ namespace Data_Access_Layer.Repositories
 
         public void Delete(int id)
         {
-            var photo = db.Photos.FirstOrDefault(f => f.Id == id);
+            var photo = db.Photos.FirstOrDefault(f => f.PhotoID == id);
             if (photo != null)
                 db.Entry(photo).State = EntityState.Deleted;
             db.SaveChangesAsync();
@@ -50,7 +50,7 @@ namespace Data_Access_Layer.Repositories
         public Photo Get(int id)
         {
             Photo result = null;
-            result = db.Photos.FirstOrDefault(f => f.Id == id);
+            result = db.Photos.FirstOrDefault(f => f.PhotoID == id);
             return result;
         }
 

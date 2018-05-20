@@ -26,7 +26,7 @@ namespace BusinessLogicLayer.Services
             //if (phone == null)
             //    throw new ValidationException("Телефон не найден", "");
 
-            return new PhotoDto { Id = photo.Id, AlbumId = photo.AlbumId, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title };
+            return new PhotoDto { Id = photo.PhotoID, AlbumId = photo.AlbumID, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title };
         }
     }
 }

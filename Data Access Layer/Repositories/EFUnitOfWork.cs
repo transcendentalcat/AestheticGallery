@@ -18,15 +18,14 @@ namespace Data_Access_Layer.Repositories
         private ClientProfileRepository clientProfileRepository;
         private AlbumRepository albumRepository;
         private CommentRepository commentRepository;
-        private LikeRepository likeRepository;
         private ApplicationUserManager userManager;
         private ApplicationRoleManager roleManager;
         private IClientManager clientManager;
 
 
-        public EFUnitOfWork(string connectionString)
+        public EFUnitOfWork()
         {
-            db = new PhotoContext(connectionString);
+            db = new PhotoContext();
             userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
             roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(db));
             //clientManager = new ClientManager(db);
@@ -68,16 +67,6 @@ namespace Data_Access_Layer.Repositories
                 if (commentRepository == null)
                     commentRepository = new CommentRepository(db);
                 return commentRepository;
-            }
-        }
-
-        public IRepository<Like> Likes
-        {
-            get
-            {
-                if (likeRepository == null)
-                    likeRepository = new LikeRepository(db);
-                return likeRepository;
             }
         }
 

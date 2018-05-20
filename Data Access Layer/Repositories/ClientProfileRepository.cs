@@ -27,7 +27,7 @@ namespace Data_Access_Layer.Repositories
 
         public void Delete(int id)
         {
-            var clientProfile = db.ClientProfiles.FirstOrDefault(f => f.Id == id);
+            var clientProfile = db.ClientProfiles.FirstOrDefault(f => f.ClientProfileID == id);
             if (clientProfile != null)
                 db.Entry(clientProfile).State = EntityState.Deleted;
             db.SaveChangesAsync();
@@ -50,7 +50,7 @@ namespace Data_Access_Layer.Repositories
         public ClientProfile Get(int id)
         {
             ClientProfile result = null;
-            result = db.ClientProfiles.FirstOrDefault(f => f.Id == id);
+            result = db.ClientProfiles.FirstOrDefault(f => f.ClientProfileID == id);
             return result;
         }
 

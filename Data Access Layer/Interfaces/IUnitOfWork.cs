@@ -14,7 +14,6 @@ namespace Data_Access_Layer.Interfaces
         IRepository<ClientProfile> ClientProfile { get; }
         IRepository<Album> Albums { get; }
         IRepository<Comment> Comments { get; }
-        IRepository<Like> Likes { get; }
         //ApplicationUserManager UserManager { get; }
         //IClientManager ClientManager { get; }
         //ApplicationRoleManager RoleManager { get; }

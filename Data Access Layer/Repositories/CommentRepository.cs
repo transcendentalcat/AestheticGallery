@@ -27,7 +27,7 @@ namespace Data_Access_Layer.Repositories
 
         public void Delete(int id)
         {
-            var comment = db.Comments.FirstOrDefault(f => f.Id == id);
+            var comment = db.Comments.FirstOrDefault(f => f.CommentID == id);
             if (comment != null)
                 db.Entry(comment).State = EntityState.Deleted;
             db.SaveChanges();
@@ -50,7 +50,7 @@ namespace Data_Access_Layer.Repositories
         public Comment Get(int id)
         {
             Comment result = null;
-            result = db.Comments.FirstOrDefault(f => f.Id == id);
+            result = db.Comments.FirstOrDefault(f => f.CommentID == id);
             return result;
         }
 

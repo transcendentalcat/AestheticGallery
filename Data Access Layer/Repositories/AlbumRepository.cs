@@ -27,7 +27,7 @@ namespace Data_Access_Layer.Repositories
 
         public void Delete(int id)
         {
-            var album = db.Albums.FirstOrDefault(f => f.Id == id);
+            var album = db.Albums.FirstOrDefault(f => f.AlbumID == id);
             if (album != null)
                 db.Entry(album).State = EntityState.Deleted;
             db.SaveChangesAsync();
@@ -50,7 +50,7 @@ namespace Data_Access_Layer.Repositories
         public Album Get(int id)
         {
             Album result = null;
-            result = db.Albums.FirstOrDefault(f => f.Id == id);
+            result = db.Albums.FirstOrDefault(f => f.AlbumID == id);
             return result;
         }
 

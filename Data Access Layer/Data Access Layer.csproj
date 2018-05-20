@@ -56,12 +56,12 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DataContext\PhotoContext.cs" />
+    <Compile Include="DataContext\PhotoDbInitializer.cs" />
     <Compile Include="Entities\Album.cs" />
     <Compile Include="Entities\ApplicationRole.cs" />
     <Compile Include="Entities\ApplicationUser.cs" />
     <Compile Include="Entities\ClientProfile.cs" />
     <Compile Include="Entities\Comment.cs" />
-    <Compile Include="Entities\Like.cs" />
     <Compile Include="Entities\Photo.cs" />
     <Compile Include="Identity\ApplicationRoleManager.cs" />
     <Compile Include="Identity\ApplicationUserManager.cs" />
@@ -73,7 +73,6 @@
     <Compile Include="Repositories\ClientProfileRepository.cs" />
     <Compile Include="Repositories\CommentRepository.cs" />
     <Compile Include="Repositories\EFUnitOfWork.cs" />
-    <Compile Include="Repositories\LikeRepository.cs" />
     <Compile Include="Repositories\PhotoRepository.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,15 +80,30 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Images\blackberries.JPG" />
-    <Content Include="Images\coastalview.jpg" />
-    <Content Include="Images\headland.jpg" />
-    <Content Include="Images\pebbles.jpg" />
-    <Content Include="Images\pontoon.JPG" />
-    <Content Include="Images\ripples.jpg" />
-    <Content Include="Images\rockpool.jpg" />
-    <Content Include="Images\track.JPG" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\10.jpg" />
+    <Content Include="Images\11.jpg" />
+    <Content Include="Images\12.jpg" />
+    <Content Include="Images\13.jpg" />
+    <Content Include="Images\14.jpg" />
+    <Content Include="Images\15.jpg" />
+    <Content Include="Images\16.jpg" />
+    <Content Include="Images\17.jpg" />
+    <Content Include="Images\18.jpg" />
+    <Content Include="Images\19.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\20.jpg" />
+    <Content Include="Images\21.jpg" />
+    <Content Include="Images\22.jpg" />
+    <Content Include="Images\23.jpg" />
+    <Content Include="Images\24.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Images\5.jpg" />
+    <Content Include="Images\6.jpg" />
+    <Content Include="Images\7.jpg" />
+    <Content Include="Images\8.jpg" />
+    <Content Include="Images\9.jpg" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

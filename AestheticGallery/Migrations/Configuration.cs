@@ -10,7 +10,7 @@ namespace AestheticGallery.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "AestheticGallery.Models.ApplicationDbContext";
+            //ContextKey = "AestheticGallery.Models.ApplicationDbContext";
         }
 
         protected override void Seed(AestheticGallery.Models.ApplicationDbContext context)
