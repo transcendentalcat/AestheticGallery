@@ -13,10 +13,12 @@ namespace AestheticGallery.Controllers
     public class HomeController : Controller
     {        
         IClientProfileService clientService;
+        IPhotoService photoService;
 
-        public HomeController(IClientProfileService serv)
+        public HomeController(IClientProfileService servC, IPhotoService servP)
         {
-            clientService = serv;
+            clientService = servC;
+            photoService = servP;
         }
 
         public ActionResult Index()
@@ -46,7 +48,7 @@ namespace AestheticGallery.Controllers
             return View();
         }
 
-       
+
 
         //public ActionResult GetPhoto(int id)
         //{
@@ -59,14 +61,14 @@ namespace AestheticGallery.Controllers
 
 
 
-        //public ActionResult ShowPhoto(int id)
-        //{
-        //    ViewBag.Id = id;
-        //    var photoDto = photoService.GetPhoto(id);
-        //    var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
-        //    var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
-        //    return View(photo);
-        //}
+        public ActionResult ShowPhoto(int id)
+        {
+            ViewBag.Id = id;
+            var photoDto = photoService.GetPhoto(id);
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
+            var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
+            return View(photo);
+        }
 
         //public string ShowPhotoTitle(int id)
         //{

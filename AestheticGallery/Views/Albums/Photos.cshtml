@@ -18,7 +18,7 @@
         if (item.PhotoFile != null)
         {
             <div class="album-item">
-                <a href="~/Photo/ShowPhoto/@item.AlbumID">
+                <a href="~/Photo/ShowPhoto/@item.PhotoID">
                     @Html.Raw("<img src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.PhotoFile) + "\" />")
                     @Html.ActionLink("Edit", "Edit", new { id = item.AlbumID }) |
                     @Html.ActionLink("Details", "Details", new { id = item.AlbumID }) |
