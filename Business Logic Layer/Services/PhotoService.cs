@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace BusinessLogicLayer.Services
 {
@@ -27,7 +28,15 @@ namespace BusinessLogicLayer.Services
             if (photo == null)
                 throw new ValidationException("Photo is not found", "");
 
-            return new PhotoDto { Id = photo.PhotoID, AlbumId = photo.AlbumID, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title, Likes = photo.Likes};
+            return new PhotoDto{
+                PhotoID = id,
+                AlbumID = photo.AlbumID,
+                CreatedDate = photo.CreatedDate,
+                Description = photo.Description,
+                ImageMimeType = photo.ImageMimeType,
+                PhotoFile = photo.PhotoFile,
+                Title = photo.Title,
+                Likes = photo.Likes };
         }
 
         public IEnumerable<PhotoDto> GetPhotos()
@@ -43,10 +52,27 @@ namespace BusinessLogicLayer.Services
             return result.Where(predicate);
         }
 
-        public void Create(PhotoDto item)
+        public void Create(PhotoDto item, HttpPostedFileBase image)
         {
-            throw new NotImplementedException();
-        }
+            if (item == null || image == null)
+                throw new ValidationException("New posted image is not found", "");
+
+            Photo newPhoto = new Photo()
+            {
+                ImageMimeType = image.ContentType,
+                CreatedDate = DateTime.Now,
+                Title = item.Title, 
+                AlbumID = item.AlbumID,
+                Description = item.Description,
+                Likes = 0
+            };
+
+            newPhoto.PhotoFile = new byte[image.ContentLength];
+            image.InputStream.Read(newPhoto.PhotoFile, 0, image.ContentLength);
+           
+                db.Photos.Create(newPhoto);
+                db.SaveAsync();               
+        }               
 
         public void Update(PhotoDto item)
         {
@@ -55,18 +81,18 @@ namespace BusinessLogicLayer.Services
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            db.Photos.Delete(id);
         }
 
         public PhotoDto GetFirstPhoto(AlbumDto album)
         {
             
-            var photos = db.Photos.Find(p => p.AlbumID == album.Id);
+            var photos = db.Photos.Find(p => p.AlbumID == album.AlbumID);
             var photo = photos.FirstOrDefault();
             if (photo == null)
-                throw new ValidationException("Photo id not found", "");
+                throw new ValidationException("Photo is not found", "");
 
-            return new PhotoDto { Id = photo.PhotoID, AlbumId = photo.AlbumID, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title, Likes = photo.Likes };
+            return new PhotoDto { PhotoID = photo.PhotoID, AlbumID = photo.AlbumID, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title, Likes = photo.Likes };
         }
         
     }

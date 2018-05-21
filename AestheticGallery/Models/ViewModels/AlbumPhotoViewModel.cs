@@ -7,7 +7,7 @@ namespace AestheticGallery.Models.ViewModels
 {
     public class AlbumPhotoViewModel
     {
-        public int Id { get; set; }
+        public int AlbumID { get; set; }
 
         public string Title { get; set; }
 
@@ -17,6 +17,6 @@ namespace AestheticGallery.Models.ViewModels
 
         public DateTime CreatedDate { get; set; }
 
-        public int ClientProfileId { get; set; }
+        public int ClientProfileID { get; set; }
     }
 }

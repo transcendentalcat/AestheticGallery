@@ -7,23 +7,29 @@ using AestheticGallery.Models.ViewModels;
 using AutoMapper;
 using BusinessLogicLayer.DataTransferObjects;
 using BusinessLogicLayer.Interfaces;
-using Data_Access_Layer.DataContext;
 
 namespace AestheticGallery.Controllers
 {
     public class HomeController : Controller
-    {
-        PhotoContext db = new PhotoContext();
-        IPhotoService photoService;
+    {        
+        IClientProfileService clientService;
 
-        public HomeController(IPhotoService serv)
+        public HomeController(IClientProfileService serv)
         {
-            photoService = serv;
+            clientService = serv;
         }
 
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult Users()
+        {
+            IEnumerable<ClientProfileDto> clientDtos = clientService.GetClientProfiles();
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<ClientProfileDto, ClientProfileViewModel>()).CreateMapper();
+            var clients = mapper.Map<IEnumerable<ClientProfileDto>, List<ClientProfileViewModel>>(clientDtos);
+            return View(clients);   
         }
 
         public ActionResult About()
@@ -40,36 +46,35 @@ namespace AestheticGallery.Controllers
             return View();
         }
 
-        public string Test()
-        {
-            return db.ClientProfiles.Find(3).Name;
-        }
+       
 
-        public ActionResult GetPhoto(int id)
-        {
-            var photoDto = photoService.GetPhoto(id);
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
-            var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
+        //public ActionResult GetPhoto(int id)
+        //{
+        //    var photoDto = photoService.GetPhoto(id);
+        //    var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
+        //    var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
 
-            return File(photo.PhotoFile, photo.ImageMimeType);
-        }
+        //    return File(photo.PhotoFile, photo.ImageMimeType);
+        //}
 
-        public ActionResult ShowPhoto(int id)
-        {
-            ViewBag.Id = id;
-            var photoDto = photoService.GetPhoto(id);
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
-            var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
-            return View(photo);
-        }
 
-        public string ShowPhotoTitle(int id)
-        {
-            var photoDto = photoService.GetPhoto(id);
-            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
-            var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
 
-            return photo.Title;
-        }
+        //public ActionResult ShowPhoto(int id)
+        //{
+        //    ViewBag.Id = id;
+        //    var photoDto = photoService.GetPhoto(id);
+        //    var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
+        //    var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
+        //    return View(photo);
+        //}
+
+        //public string ShowPhotoTitle(int id)
+        //{
+        //    var photoDto = photoService.GetPhoto(id);
+        //    var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
+        //    var photo = mapper.Map<PhotoDto, PhotoViewModel>(photoDto);
+
+        //    return photo.Title;
+        //}
     }
 }

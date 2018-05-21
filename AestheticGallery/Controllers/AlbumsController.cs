@@ -27,7 +27,7 @@ namespace AestheticGallery.Controllers
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<AlbumDto, AlbumViewModel>()).CreateMapper();
             var album = mapper.Map<AlbumDto, AlbumViewModel>(albumDto);
             ViewBag.AlbTitle = album.Title;
-            IEnumerable<PhotoDto> photoDtos = photoService.FindByCriteria(p => p.AlbumId == id);
+            IEnumerable<PhotoDto> photoDtos = photoService.FindByCriteria(p => p.AlbumID == id);
             var mapper2 = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
             var photos = mapper2.Map<IEnumerable<PhotoDto>, List<PhotoViewModel>>(photoDtos);
             return View(photos);
@@ -35,7 +35,7 @@ namespace AestheticGallery.Controllers
 
         public ActionResult Album(int id)
         {
-            var albumsDto = albumService.FindByCriteria(a => a.ClientProfileId == id);
+            var albumsDto = albumService.FindByCriteria(a => a.ClientProfileID == id);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<AlbumDto, AlbumPhotoViewModel>()).CreateMapper();
             var albums = mapper.Map<IEnumerable<AlbumDto>, List<AlbumPhotoViewModel>>(albumsDto);
             for (int i = 0; i < albumsDto.Count(); i++)
@@ -48,7 +48,7 @@ namespace AestheticGallery.Controllers
 
         public ActionResult UserAlbum(int id)
         {
-            var albumsDto = albumService.FindByCriteria(a => a.ClientProfileId == id);
+            var albumsDto = albumService.FindByCriteria(a => a.ClientProfileID == id);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<AlbumDto, AlbumViewModel>()).CreateMapper();
             var albums = mapper.Map<IEnumerable<AlbumDto>, List<AlbumViewModel>>(albumsDto);
             

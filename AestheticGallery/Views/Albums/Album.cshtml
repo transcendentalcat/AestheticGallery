@@ -22,18 +22,18 @@
         @Html.Raw("<div style=\"background-image: url(\"data:image/jpeg;base64,"
                                                + Convert.ToBase64String(Model.ElementAt(j).FirstPhoto) + "\" class=\"gallery_album\">")
         <div class="shadow"><div class="name"><a href="~/User/Album/@(j+1)">@Model.ElementAt(j).Title</a></div></div>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ElementAt(j).Id }) |
-        @Html.ActionLink("Details", "Details", new { id = Model.ElementAt(j).Id }) |
-        @Html.ActionLink("Delete", "Delete", new { id = Model.ElementAt(j).Id })
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ElementAt(j).AlbumID }) |
+        @Html.ActionLink("Details", "Details", new { id = Model.ElementAt(j).AlbumID }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ElementAt(j).AlbumID })
     </div>
     if ((j + 1) < Model.Count())
     {
         @Html.Raw("<div style=\"background-image: url(\"data:image/jpeg;base64,"
                                             + Convert.ToBase64String(Model.ElementAt(j + 1).FirstPhoto) + "\" class=\"gallery_album\">")
         <div class="shadow"><div class="name"><a href="~/User/Album/@(j + 2)">@Model.ElementAt(j + 1).Title</a></div></div>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.ElementAt(j + 1).Id }) 
-        @Html.ActionLink("Details", "Details", new { id = Model.ElementAt(j + 1).Id }) 
-        @Html.ActionLink("Delete", "Delete", new { id = Model.ElementAt(j + 1).Id })
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ElementAt(j + 1).AlbumID }) 
+        @Html.ActionLink("Details", "Details", new { id = Model.ElementAt(j + 1).AlbumID }) 
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ElementAt(j + 1).AlbumID })
         @Html.Raw("</div>")
      }
 @Html.Raw("</div>")

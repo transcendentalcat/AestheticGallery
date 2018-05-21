@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AestheticGallery.Models.ViewModels.ClientProfileViewModel>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Styles.Render("~/Content/style")
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="wrapper">
+    <div id="services-block">
+        <div class="services">
+            <h1> Пользователи</h1>
+
+            @foreach (var item in Model)
+            {
+                <div class="services_wrap">
+                    <div class="serv_item wow fadeInDown" data-wow-duration="1.5s" data-wow-offset="200">
+                        <i class="fas fa-camera-retro"></i>
+                        <p class="serv_title">@Html.DisplayFor(modelItem => item.Name)</p>
+                        <p> @Html.DisplayFor(modelItem => item.ProfileCreatedDate)</p>
+                        @Html.ActionLink("Посмотреть аккунт", "UserAlbum", "Albums", new { id = item.ClientProfileID}, null)
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

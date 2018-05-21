@@ -8,11 +8,11 @@ namespace BusinessLogicLayer.DataTransferObjects
 {
     public class CommentDto
     {
-        public int Id { get; set; }
+        public int CommentID { get; set; }
 
-        public int PhotoId { get; set; }
+        public int PhotoID { get; set; }
 
-        public int ClientProfileId { get; set; }
+        public int ClientProfileID { get; set; }
 
         public string Body { get; set; }
     }

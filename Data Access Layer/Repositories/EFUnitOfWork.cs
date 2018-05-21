@@ -40,7 +40,7 @@ namespace Data_Access_Layer.Repositories
             }
         }
 
-        public IRepository<ClientProfile> ClientProfile
+        public IRepository<ClientProfile> ClientProfiles
         {
             get
             {

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>UserAlbum</h2>
+<h1 class="album-title"> Альбомы</h1>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,22 +26,23 @@
 
     @foreach (var item in Model)
     {
-        @item.Id
-        <tr>
-            <td>
-                <a href="~/Albums/Photos/@item.Id">@Html.DisplayFor(modelItem => item.Title)</a>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreatedDate)
-            </td>
-            <td>
-                @Html.ActionLink("Добавить фото", "AddPhoto", new { id = item.Id }) |
-                @Html.ActionLink("Удалить альбом", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+    <tr>
+        <td>
+            <a href="~/Albums/Photos/@item.AlbumID">@Html.DisplayFor(modelItem => item.Title)</a>
+        </td>
+        
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Добавить фото", "AddPhoto", new { id = item.AlbumID }) |
+            @Html.ActionLink("Удалить альбом", "Delete", new { id = item.AlbumID })
+        </td>      
+    </tr>
     }
 
 </table>

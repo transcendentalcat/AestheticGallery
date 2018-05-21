@@ -8,7 +8,7 @@ namespace BusinessLogicLayer.DataTransferObjects
 {
     public class AlbumDto
     {
-        public int Id { get; set; }
+        public int AlbumID { get; set; }
 
         public string Title { get; set; }
 
@@ -16,6 +16,6 @@ namespace BusinessLogicLayer.DataTransferObjects
 
         public DateTime CreatedDate { get; set; }
 
-        public int ClientProfileId { get; set; }
+        public int ClientProfileID { get; set; }
     }
 }

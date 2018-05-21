@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DataTransferObjects;
+using BusinessLogicLayer.Exceptions;
 using BusinessLogicLayer.Interfaces;
 using Data_Access_Layer.Entities;
 using Data_Access_Layer.Interfaces;
@@ -21,14 +22,12 @@ namespace BusinessLogicLayer.Services
         }
 
         public AlbumDto GetAlbum(int id)
-        {
-            //if (id == null)
-            //    throw new ValidationException("Не установлено id телефона", "");
+        {          
             var album = db.Albums.Get(id);
-            //if (phone == null)
-            //    throw new ValidationException("Телефон не найден", "");
+            if (album == null)
+                throw new ValidationException("Album is not found", "");
 
-            return new AlbumDto { Id = album.AlbumID, CreatedDate = album.CreatedDate, Description = album.Description, Title = album.Title, ClientProfileId = album.ClientProfileID };
+            return new AlbumDto { AlbumID = id, CreatedDate = album.CreatedDate, Description = album.Description, Title = album.Title, ClientProfileID = album.ClientProfileID };
         }
 
         public IEnumerable<AlbumDto> GetAlbums()
@@ -46,17 +45,41 @@ namespace BusinessLogicLayer.Services
 
         public void Create(AlbumDto item)
         {
-            throw new NotImplementedException();
+            /*var client = db.ClientProfiles.Get(item.ClientProfileID);
+
+            var newAlbum = new Album()
+            {
+                Title = item.Title,
+                Description = item.Description,
+                ClientProfileID = client.ClientProfileID,
+                ClientProfile = client,
+                Photos = Mapper.Map<ICollection<PhotoDto>, ICollection<Photo>>(item.P)
+            };
+
+            db.Albums.Create(newAlbum);*/
+            db.SaveAsync();
         }
 
         public void Update(AlbumDto item)
         {
-            throw new NotImplementedException();
+            var album = db.Albums.Get(item.AlbumID);         
+
+            album.Title = item.Title;
+            album.Description = item.Description;
+
+            db.Albums.Update(album);
+            db.SaveAsync();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            db.Albums.Delete(id);
+            db.SaveAsync();
+        }
+
+        public void Dispose()
+        {
+            db.Dispose();
         }
     }
 }

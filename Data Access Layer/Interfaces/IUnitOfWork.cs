@@ -11,7 +11,7 @@ namespace Data_Access_Layer.Interfaces
     public interface IUnitOfWork : IDisposable
     {
         IRepository<Photo> Photos { get; }
-        IRepository<ClientProfile> ClientProfile { get; }
+        IRepository<ClientProfile> ClientProfiles { get; }
         IRepository<Album> Albums { get; }
         IRepository<Comment> Comments { get; }
         //ApplicationUserManager UserManager { get; }
