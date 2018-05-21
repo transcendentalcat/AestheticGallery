@@ -298,7 +298,7 @@ nav ul li a:hover {
 	max-width: 400px;
 }
 
-#photographer_info article p i {
+#photographer_info article p i {m
 	font-size: 46px;
 }
 
@@ -343,15 +343,17 @@ nav ul li a:hover {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
+    height: 100%;
 	flex: 1;
 }
 
 .services .services_wrap .serv_item {
-	width: 200px;
-	text-align: center;
-	box-sizing: border-box;
-	padding: 20px;
-	//transition: .5s;
+    width: 200px;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 20px;
+    transition: .5s;
 }
 
 .services .serv_item i {
@@ -360,7 +362,6 @@ nav ul li a:hover {
 }
 
 .serv_item:hover {
-	border-radius: 20px;
 	border: solid thin;
 	border-color: #aaa;
 }
@@ -459,6 +460,7 @@ nav ul li a:hover {
 
 /* Альбом*/
 .album-title {
+    margin-top: 50px;
 	text-align: center;
 	font-family: 'Poiret One', cursive;
 	font-size: 40px;
@@ -981,9 +983,9 @@ nav ul li a:hover {
 
 
 .black-shadow {
-	height: 100vh;
+	height: 100%;
 	display: flex;
-	width: 100wh;
+	width: 100%;
 	justify-content: center;
 	align-items: center;
 	background: rgba(38, 38, 38, 0.5);
@@ -1010,15 +1012,12 @@ nav ul li a:hover {
 	background-origin: border-box;
 	background-size: cover;
 	background-attachment: fixed;
-	background-image: url("5.jpg");
+	background-image: url("89e6e528f0641c21dc4004e79d1f2231.jpg");
 }
 
 #services-block .services{
 	display: flex;
-	flex-direction: column;
 	background: rgba(0, 0, 0, 0.6);
-	//height: 100vh;
-
 }
 
 #services-block h1 {
@@ -1038,6 +1037,7 @@ nav ul li a:hover {
 #services-block .services .serv_item {
 	background: rgba(24, 24, 24, 0.7);
 	width: 270px;
+    height: 200px;
 }
 
 #services-block .services .serv_item:hover {
@@ -1166,4 +1166,10 @@ nav ul li a:hover {
 
 .timeline .right .point-space {
 	border-right: 3px solid #262626;
+}
+
+/***********************************************************/
+.flexy {
+    display: flex;
+    justify-content: space-between;
 }

@@ -4,6 +4,8 @@
     ViewBag.Title = "UserAlbum";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@Styles.Render("~/Content/style")
+
 
 <h1 class="album-title"> Альбомы</h1>
 
@@ -26,23 +28,23 @@
 
     @foreach (var item in Model)
     {
-    <tr>
-        <td>
-            <a href="~/Albums/Photos/@item.AlbumID">@Html.DisplayFor(modelItem => item.Title)</a>
-        </td>
-        
+        <tr>
+            <td>
+                <a href="~/Albums/Photos/@item.AlbumID">@Html.DisplayFor(modelItem => item.Title)</a>
+            </td>
 
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.ActionLink("Добавить фото", "AddPhoto", new { id = item.AlbumID }) |
-            @Html.ActionLink("Удалить альбом", "Delete", new { id = item.AlbumID })
-        </td>      
-    </tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.ActionLink("Добавить фото", "AddPhoto", new { id = item.AlbumID }) |
+                @Html.ActionLink("Удалить альбом", "Delete", new { id = item.AlbumID })
+            </td>
+        </tr>
     }
 
 </table>

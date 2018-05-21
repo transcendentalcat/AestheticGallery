@@ -209,7 +209,7 @@
     <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PhotosController.cs" />
+    <Compile Include="Controllers\PhotoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -310,17 +310,16 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Home\ShowPhoto.cshtml" />
+    <Content Include="Views\Photo\ShowPhoto.cshtml" />
     <Content Include="Views\Albums\Photos.cshtml" />
     <Content Include="Views\Albums\Album.cshtml" />
     <Content Include="Views\Albums\UserAlbum.cshtml" />
-    <Content Include="Views\Albums\ShowPhoto.cshtml" />
     <Content Include="Views\Home\Users.cshtml" />
+    <Content Include="Views\Photo\AddPhoto.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Album\" />
-    <Folder Include="Views\Photos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
