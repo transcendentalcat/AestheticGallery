@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.Interfaces
     {
         ClientProfileDto GetClientProfile(int id);
         IEnumerable<ClientProfileDto> GetClientProfiles();
-        IEnumerable<ClientProfileDto> Find(Func<ClientProfileDto, Boolean> predicate);
+        IEnumerable<ClientProfileDto> FindByCriteria(Func<ClientProfileDto, Boolean> predicate);
         void Create(ClientProfileDto item);
         void Update(ClientProfileDto item);
         void Delete(int id);

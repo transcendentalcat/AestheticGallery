@@ -10,8 +10,9 @@ namespace BusinessLogicLayer.Interfaces
     public interface IPhotoService
     {
         PhotoDto GetPhoto(int id);
+        PhotoDto GetFirstPhoto(AlbumDto album);
         IEnumerable<PhotoDto> GetPhotos();
-        IEnumerable<PhotoDto> Find(Func<PhotoDto, Boolean> predicate);
+        IEnumerable<PhotoDto> FindByCriteria(Func<PhotoDto, Boolean> predicate);
         void Create(PhotoDto item);
         void Update(PhotoDto item);
         void Delete(int id);  

@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.Interfaces
     {
         CommentDto GetComment(int id);
         IEnumerable<CommentDto> GetComments();
-        IEnumerable<CommentDto> Find(Func<CommentDto, Boolean> predicate);
+        IEnumerable<CommentDto> FindByCriteria(Func<CommentDto, Boolean> predicate);
         void Create(CommentDto item);
         void Update(CommentDto item);
         void Delete(int id);

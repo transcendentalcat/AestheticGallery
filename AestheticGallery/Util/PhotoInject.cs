@@ -10,8 +10,8 @@ namespace NLayerApp.WEB.Util
         {
             Bind<IPhotoService>().To<PhotoService>();
             Bind<IAlbumService>().To<AlbumService>();
-            Bind<ICommentService>().To<CommentService>();
-            Bind<IClientProfileService>().To<ClientProfileService>();
+            //Bind<ICommentService>().To<CommentService>();
+            //Bind<IClientProfileService>().To<ClientProfileService>();
         }
     }
 }

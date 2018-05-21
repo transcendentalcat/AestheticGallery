@@ -36,5 +36,27 @@ namespace BusinessLogicLayer.Services
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Album, AlbumDto>()).CreateMapper();
             return mapper.Map<IEnumerable<Album>, List<AlbumDto>>(db.Albums.GetAll());
         }
+
+        public IEnumerable<AlbumDto> FindByCriteria(Func<AlbumDto, bool> predicate)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Album, AlbumDto>()).CreateMapper();
+            var result = mapper.Map<IEnumerable<Album>, List<AlbumDto>>(db.Albums.GetAll());
+            return result.Where(predicate);
+        }
+
+        public void Create(AlbumDto item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(AlbumDto item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

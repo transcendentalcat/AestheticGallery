@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using BusinessLogicLayer.DataTransferObjects;
+using BusinessLogicLayer.Exceptions;
 using BusinessLogicLayer.Interfaces;
 using Data_Access_Layer.Entities;
 using Data_Access_Layer.Interfaces;
@@ -22,11 +23,9 @@ namespace BusinessLogicLayer.Services
 
         public PhotoDto GetPhoto(int id)
         {
-            //if (id == null)
-            //    throw new ValidationException("Не установлено id телефона", "");
             var photo = db.Photos.Get(id);
-            //if (phone == null)
-            //    throw new ValidationException("Телефон не найден", "");
+            if (photo == null)
+                throw new ValidationException("Photo is not found", "");
 
             return new PhotoDto { Id = photo.PhotoID, AlbumId = photo.AlbumID, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title, Likes = photo.Likes};
         }
@@ -37,6 +36,38 @@ namespace BusinessLogicLayer.Services
             return mapper.Map<IEnumerable<Photo>, List<PhotoDto>>(db.Photos.GetAll());
         }
 
+        public IEnumerable<PhotoDto> FindByCriteria(Func<PhotoDto, bool> predicate)
+        {
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<Photo, PhotoDto>()).CreateMapper();
+            var result =  mapper.Map<IEnumerable<Photo>, List<PhotoDto>>(db.Photos.GetAll());
+            return result.Where(predicate);
+        }
+
+        public void Create(PhotoDto item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(PhotoDto item)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public PhotoDto GetFirstPhoto(AlbumDto album)
+        {
+            
+            var photos = db.Photos.Find(p => p.AlbumID == album.Id);
+            var photo = photos.FirstOrDefault();
+            if (photo == null)
+                throw new ValidationException("Photo id not found", "");
+
+            return new PhotoDto { Id = photo.PhotoID, AlbumId = photo.AlbumID, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title, Likes = photo.Likes };
+        }
         
     }
 }

@@ -11,7 +11,7 @@ namespace BusinessLogicLayer.Interfaces
     {
         AlbumDto GetAlbum(int id);
         IEnumerable<AlbumDto> GetAlbums();
-        IEnumerable<AlbumDto> Find(Func<AlbumDto, Boolean> predicate);
+        IEnumerable<AlbumDto> FindByCriteria(Func<AlbumDto, Boolean> predicate);
         void Create(AlbumDto item);
         void Update(AlbumDto item);
         void Delete(int id);
