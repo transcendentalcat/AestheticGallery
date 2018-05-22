@@ -190,7 +190,7 @@ nav ul li a:hover {
 	left: 0;
 	width: 100%;
 	opacity: 0;
-	transition: opacity 2s; //cubic-bezier(0.770, 0.000, 0.175, 1.000);
+	transition: opacity 2s; /*//cubic-bezier(0.770, 0.000, 0.175, 1.000);*/
 }
 
 .control {
@@ -298,7 +298,7 @@ nav ul li a:hover {
 	max-width: 400px;
 }
 
-#photographer_info article p i {m
+#photographer_info article p i {
 	font-size: 46px;
 }
 
@@ -334,7 +334,7 @@ nav ul li a:hover {
 .services {
 	display: flex;
 	flex-wrap: wrap;
-	//justify-content: space-around;
+	/*//justify-content: space-around;*/
 	padding: 3vw;
 	margin-bottom: 15vh;
 }
@@ -376,7 +376,7 @@ nav ul li a:hover {
 .advantages{
 	display: flex;
 	flex-wrap: wrap;
-	//justify-content: space-around;
+	/*stify-content: space-around;*/
 	
 	color: #fff;
 	background-color: #111;
@@ -387,7 +387,6 @@ nav ul li a:hover {
 	display: flex;
 	flex-wrap: wrap;
 	padding: 3vw;
-	//justify-content: space-around;
 	align-items: center;
 	flex: 1;
 }
@@ -571,9 +570,9 @@ nav ul li a:hover {
 
 /* Портфолио */
 
-.gallery_wrapper {
+/*.gallery_wrapper {
 	
-}
+}*/
 
 .gallery_item {
 	display: flex;
@@ -669,7 +668,6 @@ nav ul li a:hover {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
-	//border: solid thin;
 	border-radius: 50px;
 }
 
@@ -686,7 +684,6 @@ nav ul li a:hover {
 }
 
 .social {
-	//background: rgba(38, 38, 38, 1) ; !important;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
@@ -699,7 +696,7 @@ nav ul li a:hover {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	//align-items: center;
+	/*align-items: center;*/
 	z-index: 2;
 	text-align: center;
 }
@@ -708,7 +705,6 @@ nav ul li a:hover {
 	flex: 100%;
 	text-align: center;
 	font-size: 35px;
-	//font-family: 'Pacifico', cursive;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: normal;
 
@@ -718,7 +714,6 @@ nav ul li a:hover {
 	flex: 100%;
 	text-align: center;
 	font-size: 35px;
-	//font-family: 'Pacifico', cursive;
 	font-family: 'Montserrat', sans-serif;
 	font-weight: normal;
 }
@@ -974,7 +969,7 @@ nav ul li a:hover {
 #member3 {
 	height: 100vh;
 	background-repeat: no-repeat;
-	background-position: top; center;
+	background-position: top; 
 	background-origin: border-box;
 	background-size: cover;
 	background-attachment: fixed;
@@ -1040,8 +1035,8 @@ nav ul li a:hover {
     height: 200px;
 }
 
-#services-block .services .serv_item:hover {
-}
+/*#services-block .services .serv_item:hover {
+}*/
 
 /*Прайслист*/
 #prices {
@@ -1054,8 +1049,6 @@ nav ul li a:hover {
 	display: flex;
 	flex-basis: 350px;
 	flex-direction: column;
-	//align-items: center;
-	//justify-content: center;
 	border: solid thin #eee;
 
 	box-sizing: border-box;
@@ -1114,7 +1107,6 @@ nav ul li a:hover {
 .timeline .point .point-content {
 	display: flex;
 	flex-direction: column;
-	//align-items: center;
 	flex-basis: 45%;	
 	box-sizing: border-box;
 	padding: 10%;

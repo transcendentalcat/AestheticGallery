@@ -24,7 +24,7 @@ namespace AestheticGallery.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
+            : base("name=PhotoContext", throwIfV1Schema: false)
         {
         }
 
