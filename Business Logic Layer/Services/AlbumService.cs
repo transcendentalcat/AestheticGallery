@@ -45,7 +45,13 @@ namespace BusinessLogicLayer.Services
 
         public void Create(AlbumDto item)
         {
-            /*var client = db.ClientProfiles.Get(item.ClientProfileID);
+            if (item == null)
+                throw new ArgumentNullException();
+
+            var client = db.ClientProfiles.Get(item.ClientProfileID);
+
+            if (client == null)
+                throw new ClientNotFoundException("User is not found");
 
             var newAlbum = new Album()
             {
@@ -56,13 +62,19 @@ namespace BusinessLogicLayer.Services
                 Photos = Mapper.Map<ICollection<PhotoDto>, ICollection<Photo>>(item.P)
             };
 
-            db.Albums.Create(newAlbum);*/
+            db.Albums.Create(newAlbum);
             db.SaveAsync();
         }
 
         public void Update(AlbumDto item)
         {
-            var album = db.Albums.Get(item.AlbumID);         
+            if (item == null)
+                throw new ArgumentNullException();
+
+            var album = db.Albums.Get(item.AlbumID);
+
+            if (album == null)
+                throw new AlbumNotFoundException("Album is not found");
 
             album.Title = item.Title;
             album.Description = item.Description;

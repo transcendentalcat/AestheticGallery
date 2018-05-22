@@ -41,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.CreatedDate)
             </td>
             <td>
-                @Html.ActionLink("Добавить фото", "AddPhoto", new { id = item.AlbumID }) |
+                @Html.ActionLink("Добавить фото", "AddPhoto", "Photo", new { id = item.AlbumID }) |
                 @Html.ActionLink("Удалить альбом", "Delete", new { id = item.AlbumID })
             </td>
         </tr>

@@ -25,9 +25,10 @@ namespace BusinessLogicLayer.Services
         public PhotoDto GetPhoto(int id)
         {
             var photo = db.Photos.Get(id);
-            if (photo == null)
-                throw new ValidationException("Photo is not found", "");
 
+            if (photo == null)
+                throw PhotoNotFoundException("Photo is not found");
+            
             return new PhotoDto{
                 PhotoID = id,
                 AlbumID = photo.AlbumID,
@@ -86,7 +87,9 @@ namespace BusinessLogicLayer.Services
 
         public PhotoDto GetFirstPhoto(AlbumDto album)
         {
-            
+            if (album == null)
+                throw new ArgumentNullException();
+
             var photos = db.Photos.Find(p => p.AlbumID == album.AlbumID);
             var photo = photos.FirstOrDefault();
             if (photo == null)
@@ -94,6 +97,8 @@ namespace BusinessLogicLayer.Services
 
             return new PhotoDto { PhotoID = photo.PhotoID, AlbumID = photo.AlbumID, CreatedDate = photo.CreatedDate, Description = photo.Description, ImageMimeType = photo.ImageMimeType, PhotoFile = photo.PhotoFile, Title = photo.Title, Likes = photo.Likes };
         }
+
+        
         
     }
 }

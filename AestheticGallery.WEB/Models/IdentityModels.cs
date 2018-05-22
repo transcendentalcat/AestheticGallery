@@ -4,12 +4,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
-namespace AestheticGallery.Models
+namespace AestheticGallery.WEB.Models
 {
     // В профиль пользователя можно добавить дополнительные данные, если указать больше свойств для класса ApplicationUser. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=317594.
     public class ApplicationUser : IdentityUser
     {
-        
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Обратите внимание, что authenticationType должен совпадать с типом, определенным в CookieAuthenticationOptions.AuthenticationType
@@ -17,14 +16,12 @@ namespace AestheticGallery.Models
             // Здесь добавьте утверждения пользователя
             return userIdentity;
         }
-
-
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("name=PhotoContext", throwIfV1Schema: false)
+            : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
 

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<AestheticGallery.Models.ViewModels.PhotoViewModel>
+
+<div id="searchresults">
+    <h3>Результат поиска:</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+        <li>@item.Title</li>
+        <li> @Html.Raw("<img style='width:800px;' src=\"data:image/jpeg;base64," + Convert.ToBase64String(item.PhotoFile) + "\" />")</li>
+        }
+    </ul>
+</div>

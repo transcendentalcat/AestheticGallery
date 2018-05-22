@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@Styles.Render("~/Content/style")
+<div class="album-title">Поиск</div>
+<h3> Введите название фотографии</h3>
+<div>
+    @using (Ajax.BeginForm("PhotoSearch", new AjaxOptions
+    {
+        UpdateTargetId = "results",
+        LoadingElementId = "loading",
+        LoadingElementDuration = 1000
+    }))
+    {
+        <input type="text" name="name" class="form-control" placeholder="Введите название" />
+        <input type="submit" value="Поиск" class="btn btn-default" />
+    }
+    <div id="loading" style="display:none; font-weight:bold;">
+        <p>Пожалуйста, подождите ...</p>
+    </div>
+    <div id="results"></div>
+</div>
+@Scripts.Render("~/scripts/jquery-1.10.2.min.js")
+@Scripts.Render("~/scripts/jquery.unobtrusive-ajax.min.js")

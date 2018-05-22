@@ -26,6 +26,25 @@ namespace AestheticGallery.Controllers
             return View();
         }
 
+        public ActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PhotoSearch(string name)
+        {
+            var photos = photoService.FindByCriteria(p => p.Title.Contains(name)).ToList();
+            if (photos.Count <= 0)
+            {
+                return PartialView();
+            }
+
+            var mapper = new MapperConfiguration(cfg => cfg.CreateMap<PhotoDto, PhotoViewModel>()).CreateMapper();
+            var allphotos = mapper.Map<IEnumerable<PhotoDto>, List<PhotoViewModel>>(photos);
+            return PartialView(allphotos);
+        }
+
         public ActionResult Users()
         {
             IEnumerable<ClientProfileDto> clientDtos = clientService.GetClientProfiles();

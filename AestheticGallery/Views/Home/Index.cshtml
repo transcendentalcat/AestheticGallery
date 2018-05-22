@@ -1,27 +1,108 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    Layout = null;
 }
-<style>
-    body {
-        height: 100vh;
-        width: 100vw;
-        background: url("1.jpg") 50% 50% no-repeat;
-        background-size: cover;
-        overflow: hidden;
-        color: #000;
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        flex-direction: column;
-    }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>æsthetic</title>
+    <link rel="stylesheet" type="text/css" href="~/Content/style-slider.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="Animate.css">
+    <link href="https://fonts.googleapis.com/css?family=Crete+Round" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+    <script type="text/javascript" src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-2.1.0.js"></script>
+    <script src="wow.min.js"></script>
+    <script>new WOW().init();</script>
+    <script>
+        $(document).ready(function () {
+            $(".menu-icon").on("click", function () {
+                $("nav ul").toggleClass("showing");
+            });
+        });
 
-    h1 {
-        font-size: 50pt;
-    }
 
-    h4 {
-        font-size: 16pt;
-    }
-</style>
-<h1>æsthetic</h1>
-<h4>PHOTO GALLERY</h4>
+        $(window).on("scroll", function () {
+            if ($(window).scrollTop()) {
+                $("nav").addClass("black");
+            }
+            else {
+                $("nav").removeClass("black");
+            }
+        })
+
+        var i = 0;
+
+        setInterval(function Next() {
+            var images = document.querySelectorAll("#photo img");
+            var oNext = document.getElementById("next");
+            images[i].className = '';
+            i++;
+            if (i >= images.length) {
+                i = 0;
+            }
+
+            images[i].className = 'showed';
+
+        }
+            , 8000);
+    </script>
+
+    <meta charset="utf-8">
+</head>
+<body>
+    <div class="wrapper_nav">
+        <header>
+            <nav>
+                <div class="menu-icon">
+                    <i class="fa fa-bars fa-2x"></i>
+                </div>
+                <div class="logo">
+                    <a href="~/Home/Index">æsthetic</a>
+                </div>
+                <div class="menu">
+                    <ul>
+                        <li>@Html.ActionLink("Пользователи", "Users", "Home")</li>
+                        <li>@Html.ActionLink("ПоискФото", "Search", "Home")</li>
+                        <li>@Html.ActionLink("Регистрация", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                        <li>@Html.ActionLink("Вход", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+    </div>
+    <div class="wrapper">
+        <div class="shadow">
+            <h1>æsthetic</h1>
+            <p>Photo gallery</p>
+        </div>
+        <div class="slider-wrapper">
+            <div class="slider">
+                <div id="photo">
+                    <div><img class="showed" src="~/Content/1.jpg"></div>
+                    <div><img src="~/Content/2.jpg"></div>
+                    <div><img src="~/Content/3.jpg"></div>
+                    <div><img src="~/Content/4.jpg"></div>
+                    <div><img src="~/Content/5.jpg"></div>
+                    <div><img src="~/Content/6.jpg"></div>
+                </div>
+
+
+                <div id="pr_button">
+                    <img onclick="Prev()" id="prev" src="~/Content/prev.png" alt="Back">
+                </div>
+
+                <div id="n_button">
+                    <img onclick="Next()" id="next" src="~/Content/next.png" alt="Next">
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@Scripts.Render("~/bundles/script")
+@Styles.Render("~/bundles/style-slider")
