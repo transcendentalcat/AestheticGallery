@@ -33,7 +33,7 @@ namespace AestheticGallery.Controllers
             return View(photos);
         }
 
-        public ActionResult Album(int id)
+        public ActionResult Album(string id)
         {
             var albumsDto = albumService.FindByCriteria(a => a.ClientProfileID == id);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<AlbumDto, AlbumPhotoViewModel>()).CreateMapper();
@@ -46,7 +46,7 @@ namespace AestheticGallery.Controllers
             return View(albums);
         }
 
-        public ActionResult UserAlbum(int id)
+        public ActionResult UserAlbum(string id)
         {
             var albumsDto = albumService.FindByCriteria(a => a.ClientProfileID == id);
             var mapper = new MapperConfiguration(cfg => cfg.CreateMap<AlbumDto, AlbumViewModel>()).CreateMapper();

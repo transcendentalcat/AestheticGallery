@@ -11,26 +11,21 @@ namespace Data_Access_Layer.Entities
 {
     public class ClientProfile
     {
-        //[Key]
-        //[ForeignKey("ApplicationUser")]
-        //public int? ID { get; set; }
-
-        public int ClientProfileID { get; set; }
+        [Key]
+        [ForeignKey("ApplicationUser")]
+        public string ClientProfileID { get; set; }
 
         public string Name { get; set; }
 
         public string Password { get; set; }
-
-        [DataType(DataType.DateTime)]
-        [DisplayName("Created Date")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
+       
         public DateTime ProfileCreatedDate { get; set; }
 
         public virtual ICollection<Album> Albums { get; set; }
 
         public virtual ICollection<Comment> Comments { get; set; }
 
-        //public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual ApplicationUser ApplicationUser { get; set; }
 
     }
 }

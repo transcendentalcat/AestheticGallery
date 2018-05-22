@@ -16,6 +16,6 @@ namespace BusinessLogicLayer.DataTransferObjects
 
         public DateTime CreatedDate { get; set; }
 
-        public int ClientProfileID { get; set; }
+        public string ClientProfileID { get; set; }
     }
 }

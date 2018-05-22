@@ -42,7 +42,7 @@ namespace BusinessLogicLayer.Services
             if (comment == null)
                 throw new ValidationException("Comment is not found", "");
 
-            return new CommentDto { CommentID = comment.CommentID, Body = comment.Body, ClientProfileID = (int)comment.ClientProfileID,   };
+            return new CommentDto { CommentID = comment.CommentID, Body = comment.Body, ClientProfileID = comment.ClientProfileID,   };
         }
 
         public IEnumerable<CommentDto> GetComments()

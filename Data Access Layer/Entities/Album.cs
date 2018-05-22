@@ -13,7 +13,7 @@ namespace Data_Access_Layer.Entities
 
         public DateTime CreatedDate { get; set; }
 
-        public int ClientProfileID { get; set; }
+        public string ClientProfileID { get; set; }
 
         public virtual ClientProfile ClientProfile { get; set; }
 

@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWorkIdentity : IDisposable
     {
-        IRepository<Photo> Photos { get; }
-        IProfileRepository<ClientProfile> ClientProfiles { get; }
-        IRepository<Album> Albums { get; }
-        IRepository<Comment> Comments { get; }
+        ApplicationUserManager UserManager { get; }
+        IClientManager ClientManager { get; }
+        ApplicationRoleManager RoleManager { get; }
         Task SaveAsync();
     }
 }

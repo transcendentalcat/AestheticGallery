@@ -39,15 +39,16 @@ namespace AestheticGallery.Controllers
         public ActionResult AddPhoto(int id)
         {
             PhotoDto newPhoto = new PhotoDto();
-            newPhoto.AlbumID = id;
-            newPhoto.CreatedDate = DateTime.Today;
+            ViewBag.AlbumID = id;
+            
             return View(newPhoto);
         }
 
         [HttpPost]
-        public ActionResult Create(PhotoDto photo, HttpPostedFileBase image)
-        {
-            photoService.Create(photo, image);
+        public ActionResult Create(PhotoDto photo, HttpPostedFileBase Image)
+        {           
+            photoService.Create(photo, Image);
+            
             return RedirectToAction("Index");
         }
     }

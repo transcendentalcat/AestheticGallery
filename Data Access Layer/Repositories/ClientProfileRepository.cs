@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Data_Access_Layer.Repositories
 {
-    class ClientProfileRepository : IRepository<ClientProfile>
+    class ClientProfileRepository : IProfileRepository<ClientProfile>
     {
         private PhotoContext db;
 
@@ -25,9 +25,9 @@ namespace Data_Access_Layer.Repositories
             db.SaveChangesAsync();
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
-            var clientProfile = db.ClientProfiles.FirstOrDefault(f => f.ClientProfileID == id);
+            var clientProfile = db.ClientProfiles.FirstOrDefault(f => f.ClientProfileID.Equals(id));
             if (clientProfile != null)
                 db.Entry(clientProfile).State = EntityState.Deleted;
             db.SaveChangesAsync();
@@ -47,10 +47,10 @@ namespace Data_Access_Layer.Repositories
             return result;
         }
 
-        public ClientProfile Get(int id)
+        public ClientProfile Get(string id)
         {
             ClientProfile result = null;
-            result = db.ClientProfiles.FirstOrDefault(f => f.ClientProfileID == id);
+            result = db.ClientProfiles.FirstOrDefault(f => f.ClientProfileID.Equals(id));
             return result;
         }
 

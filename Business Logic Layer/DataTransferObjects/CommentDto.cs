@@ -12,7 +12,7 @@ namespace BusinessLogicLayer.DataTransferObjects
 
         public int PhotoID { get; set; }
 
-        public int ClientProfileID { get; set; }
+        public string ClientProfileID { get; set; }
 
         public string Body { get; set; }
     }

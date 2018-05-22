@@ -9,6 +9,6 @@ namespace Data_Access_Layer.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-        //public virtual ClientProfile ClientProfile { get; set; }
+        public virtual ClientProfile ClientProfile { get; set; }
     }
 }

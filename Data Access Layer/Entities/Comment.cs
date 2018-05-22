@@ -13,7 +13,7 @@ namespace Data_Access_Layer.Entities
 
         public virtual Photo Photo { get; set; }
 
-        public int? ClientProfileID { get; set; }
+        public string ClientProfileID { get; set; }
 
         public ClientProfile ClientProfile { get; set; }
     }

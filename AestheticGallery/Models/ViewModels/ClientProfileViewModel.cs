@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AestheticGallery.Models.ViewModels
 {
@@ -13,6 +12,9 @@ namespace AestheticGallery.Models.ViewModels
 
         public string Password { get; set; }
 
+        [DataType(DataType.DateTime)]
+        [Display(Name="Дата создания")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
         public DateTime ProfileCreatedDate { get; set; }
     }
 }

@@ -18,17 +18,11 @@ namespace Data_Access_Layer.Repositories
         private ClientProfileRepository clientProfileRepository;
         private AlbumRepository albumRepository;
         private CommentRepository commentRepository;
-        private ApplicationUserManager userManager;
-        private ApplicationRoleManager roleManager;
-        private IClientManager clientManager;
 
 
         public EFUnitOfWork()
         {
-            db = new PhotoContext();
-            userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
-            roleManager = new ApplicationRoleManager(new RoleStore<ApplicationRole>(db));
-            //clientManager = new ClientManager(db);
+            db = new PhotoContext();          
         }
         public IRepository<Photo> Photos
         {
@@ -40,7 +34,7 @@ namespace Data_Access_Layer.Repositories
             }
         }
 
-        public IRepository<ClientProfile> ClientProfiles
+        public IProfileRepository<ClientProfile> ClientProfiles
         {
             get
             {
@@ -70,20 +64,6 @@ namespace Data_Access_Layer.Repositories
             }
         }
 
-        public ApplicationUserManager UserManager
-        {
-            get { return userManager; }
-        }
-
-        public IClientManager ClientManager
-        {
-            get { return clientManager; }
-        }
-
-        public ApplicationRoleManager RoleManager
-        {
-            get { return roleManager; }
-        }
 
         public async Task SaveAsync()
         {
@@ -99,9 +79,6 @@ namespace Data_Access_Layer.Repositories
                 if (disposing)
                 {
                     db.Dispose();
-                    userManager.Dispose();
-                    roleManager.Dispose();
-                    clientManager.Dispose();
                 }
                 this.disposed = true;
             }

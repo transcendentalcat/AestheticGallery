@@ -29,21 +29,21 @@ namespace Data_Access_Layer.DataContext
 
             ClientProfile client1 = new ClientProfile
             { 
-                ClientProfileID = 1,
+                ClientProfileID = "1",
                 Name = "Мария Ковальская",
                 Password = "bjhbК/ss21",
                 ProfileCreatedDate = DateTime.Now
             };
             ClientProfile client2 = new ClientProfile
             {   
-                ClientProfileID = 2,
+                ClientProfileID = "2",
                 Name = "Лилия Белоус",
                 Password = "jghjghtTh!5",
                 ProfileCreatedDate = DateTime.Now
             };
             ClientProfile client3 = new ClientProfile
             {
-                ClientProfileID = 3,
+                ClientProfileID = "3",
                 Name = "Надежда Иванченко",
                 Password = "ubYnbug$h1",
                 ProfileCreatedDate = DateTime.Now
@@ -57,27 +57,27 @@ namespace Data_Access_Layer.DataContext
             {
                 new Album
                 {
-                    Title = "Cats", CreatedDate = DateTime.Today.AddDays(-7), Description = "Милые котики", ClientProfileID = 1
+                    Title = "Cats", CreatedDate = DateTime.Today.AddDays(-7), Description = "Милые котики", ClientProfileID = "1"
                 },
                 new Album
                 {
-                    Title = "Flowers", CreatedDate = DateTime.Now, Description = "Фотограифии с цветами", ClientProfileID = 1
+                    Title = "Flowers", CreatedDate = DateTime.Now, Description = "Фотограифии с цветами", ClientProfileID = "1"
                 },
                 new Album
                 {
-                    Title = "Nature", CreatedDate = DateTime.Today.AddDays(-2), Description = "Леса, горы, ландшафты", ClientProfileID = 2
+                    Title = "Nature", CreatedDate = DateTime.Today.AddDays(-2), Description = "Леса, горы, ландшафты", ClientProfileID = "2"
                 },
                 new Album
                 {
-                    Title = "Greenhouses", CreatedDate = DateTime.Now, Description = "Парники и оранжереи", ClientProfileID = 2
+                    Title = "Greenhouses", CreatedDate = DateTime.Now, Description = "Парники и оранжереи", ClientProfileID = "2"
                 },
                 new Album
                 {
-                    Title = "Bocho", CreatedDate = DateTime.Today.AddDays(-5), Description = "Бохо, викторианский стиль", ClientProfileID = 3
+                    Title = "Bocho", CreatedDate = DateTime.Today.AddDays(-5), Description = "Бохо, викторианский стиль", ClientProfileID = "3"
                 },
                 new Album
                 {
-                    Title = "Fairytale", CreatedDate = DateTime.Now, Description = "Сказочная атмосфера", ClientProfileID = 3
+                    Title = "Fairytale", CreatedDate = DateTime.Now, Description = "Сказочная атмосфера", ClientProfileID = "3"
                 }
             };
             albums.ForEach(a => db.Albums.Add(a));
@@ -312,47 +312,47 @@ namespace Data_Access_Layer.DataContext
                 new Comment {
                     PhotoID = 9,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = 1
+                    ClientProfileID = "1"
                 },
                 new Comment {
                     PhotoID = 13,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = 1
+                    ClientProfileID = "1"
                 },
                 new Comment {
                     PhotoID = 21,
                     Body = "This is the third Фото in the Adventure Works photo application",
-                    ClientProfileID = 1
+                    ClientProfileID = "1"
                 },
                 new Comment {
                     PhotoID = 1,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = 2
+                    ClientProfileID = "2"
                 },
                 new Comment {
                     PhotoID = 7,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = 2
+                    ClientProfileID = "2"
                 },
                 new Comment {
                     PhotoID = 10,
                     Body = "This is the third Фото in the Adventure Works photo application",
-                    ClientProfileID = 2
+                    ClientProfileID = "2"
                 },
                 new Comment {
                     PhotoID = 15,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = 3
+                    ClientProfileID = "3"
                 },
                 new Comment {
                     PhotoID = 1,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = 3
+                    ClientProfileID = "3"
                 },
                 new Comment {
                     PhotoID = 22,
                     Body = "This is the third Фото in the Adventure Works photo application",
-                    ClientProfileID = 3
+                    ClientProfileID = "3"
                 }
             };
             comments.ForEach(s => db.Comments.Add(s));

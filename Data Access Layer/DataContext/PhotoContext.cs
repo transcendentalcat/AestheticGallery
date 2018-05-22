@@ -24,5 +24,9 @@ namespace Data_Access_Layer.DataContext
             : base("name=PhotoContext")
         {
         }
+
+        public PhotoContext(string nameOfConnectionString) : base(nameOfConnectionString)
+        {
+        }
     }
 }
