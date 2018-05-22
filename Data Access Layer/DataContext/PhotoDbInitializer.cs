@@ -1,4 +1,7 @@
 ﻿using Data_Access_Layer.Entities;
+using Data_Access_Layer.Identity;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -17,33 +20,61 @@ namespace Data_Access_Layer.DataContext
         {
             base.Seed(db);
 
-            /*var user = new ApplicationRole { Name = "user" };
-            var admin = new ApplicationRole { Name = "admin" };
-            var guest = new ApplicationRole { Name = "guest" };
+            var userManager = new ApplicationUserManager(new UserStore<ApplicationUser>(db));
 
-            db.Roles.Add(user);
-            db.Roles.Add(guest);
-            db.Roles.Add(admin);
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
 
-            db.SaveChanges();*/
+            var role1 = new IdentityRole { Name = "admin" };
+            var role2 = new IdentityRole { Name = "user" };
+            var role3 = new IdentityRole { Name = "guest" };
+
+            roleManager.Create(role1);
+            roleManager.Create(role2);
+            roleManager.Create(role3);
+
+            var admin = new ApplicationUser { Email = "nawner@gmail.com", UserName = "NAwner" };
+            string password = "k.,k.[hbcnf23";
+            var user1 = new ApplicationUser { Email = "mkovalska@gmail.com", UserName = "Maria" };
+            string password1 = "bjhbК/ss21";
+            var user2 = new ApplicationUser { Email = "lbelous@gmail.com", UserName = "Lilia" };
+            string password2 = "jghjghtTh!5";
+            var user3 = new ApplicationUser { Email = "nivanchenko@gmail.com", UserName = "Nadin" };
+            string password3 = "ubYnbug$h1";
+            var result = userManager.Create(admin, password);
+            var result1 = userManager.Create(user1, password1);
+            var result2 = userManager.Create(user2, password2);
+            var result3 = userManager.Create(user3, password3);
+
+            if (result.Succeeded && result1.Succeeded && result2.Succeeded && result3.Succeeded)
+            {
+                userManager.AddToRole(admin.Id, role1.Name);
+                userManager.AddToRole(admin.Id, role2.Name);
+
+                userManager.AddToRole(user1.Id, role2.Name);
+                userManager.AddToRole(user2.Id, role2.Name);
+                userManager.AddToRole(user3.Id, role2.Name);
+            }
+
+            db.SaveChanges();
 
             ClientProfile client1 = new ClientProfile
-            { 
-                ClientProfileID = "1",
+            {
+                ClientProfileID = userManager.FindByName("Maria").Id,
                 Name = "Мария Ковальская",
                 Password = "bjhbК/ss21",
-                ProfileCreatedDate = DateTime.Now
+                ProfileCreatedDate = DateTime.Now, 
+
             };
             ClientProfile client2 = new ClientProfile
             {   
-                ClientProfileID = "2",
+                ClientProfileID = userManager.FindByName("Lilia").Id,
                 Name = "Лилия Белоус",
                 Password = "jghjghtTh!5",
                 ProfileCreatedDate = DateTime.Now
             };
             ClientProfile client3 = new ClientProfile
             {
-                ClientProfileID = "3",
+                ClientProfileID = userManager.FindByName("Nadin").Id,
                 Name = "Надежда Иванченко",
                 Password = "ubYnbug$h1",
                 ProfileCreatedDate = DateTime.Now
@@ -57,27 +88,27 @@ namespace Data_Access_Layer.DataContext
             {
                 new Album
                 {
-                    Title = "Cats", CreatedDate = DateTime.Today.AddDays(-7), Description = "Милые котики", ClientProfileID = "1"
+                    Title = "Cats", CreatedDate = DateTime.Today.AddDays(-7), Description = "Милые котики", ClientProfileID = client1.ClientProfileID
                 },
                 new Album
                 {
-                    Title = "Flowers", CreatedDate = DateTime.Now, Description = "Фотограифии с цветами", ClientProfileID = "1"
+                    Title = "Flowers", CreatedDate = DateTime.Now, Description = "Фотограифии с цветами", ClientProfileID = client1.ClientProfileID
                 },
                 new Album
                 {
-                    Title = "Nature", CreatedDate = DateTime.Today.AddDays(-2), Description = "Леса, горы, ландшафты", ClientProfileID = "2"
+                    Title = "Nature", CreatedDate = DateTime.Today.AddDays(-2), Description = "Леса, горы, ландшафты", ClientProfileID = client2.ClientProfileID
                 },
                 new Album
                 {
-                    Title = "Greenhouses", CreatedDate = DateTime.Now, Description = "Парники и оранжереи", ClientProfileID = "2"
+                    Title = "Greenhouses", CreatedDate = DateTime.Now, Description = "Парники и оранжереи", ClientProfileID = client2.ClientProfileID
                 },
                 new Album
                 {
-                    Title = "Bocho", CreatedDate = DateTime.Today.AddDays(-5), Description = "Бохо, викторианский стиль", ClientProfileID = "3"
+                    Title = "Bocho", CreatedDate = DateTime.Today.AddDays(-5), Description = "Бохо, викторианский стиль", ClientProfileID = client3.ClientProfileID
                 },
                 new Album
                 {
-                    Title = "Fairytale", CreatedDate = DateTime.Now, Description = "Сказочная атмосфера", ClientProfileID = "3"
+                    Title = "Fairytale", CreatedDate = DateTime.Now, Description = "Сказочная атмосфера", ClientProfileID = client3.ClientProfileID
                 }
             };
             albums.ForEach(a => db.Albums.Add(a));
@@ -312,47 +343,47 @@ namespace Data_Access_Layer.DataContext
                 new Comment {
                     PhotoID = 9,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = "1"
+                    ClientProfileID = client1.ClientProfileID
                 },
                 new Comment {
                     PhotoID = 13,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = "1"
+                    ClientProfileID = client1.ClientProfileID
                 },
                 new Comment {
                     PhotoID = 21,
                     Body = "This is the third Фото in the Adventure Works photo application",
-                    ClientProfileID = "1"
+                    ClientProfileID = client1.ClientProfileID
                 },
                 new Comment {
                     PhotoID = 1,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = "2"
+                    ClientProfileID = client2.ClientProfileID
                 },
                 new Comment {
                     PhotoID = 7,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = "2"
+                    ClientProfileID = client2.ClientProfileID
                 },
                 new Comment {
                     PhotoID = 10,
                     Body = "This is the third Фото in the Adventure Works photo application",
-                    ClientProfileID = "2"
+                    ClientProfileID = client2.ClientProfileID
                 },
                 new Comment {
                     PhotoID = 15,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = "3"
+                    ClientProfileID = client3.ClientProfileID
                 },
                 new Comment {
                     PhotoID = 1,
                     Body = "Lorem ipsum dolor sit amet, consectetur adipiscing elitore magna.",
-                    ClientProfileID = "3"
+                    ClientProfileID = client3.ClientProfileID
                 },
                 new Comment {
                     PhotoID = 22,
                     Body = "This is the third Фото in the Adventure Works photo application",
-                    ClientProfileID = "3"
+                    ClientProfileID = client3.ClientProfileID
                 }
             };
             comments.ForEach(s => db.Comments.Add(s));

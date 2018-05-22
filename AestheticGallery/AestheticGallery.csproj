@@ -213,6 +213,11 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201805221235562_Users.cs" />
+    <Compile Include="Migrations\201805221235562_Users.Designer.cs">
+      <DependentUpon>201805221235562_Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationManager.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -342,6 +347,11 @@
       <Project>{39b160c8-c7d2-41d0-ba7a-ff236889e5c5}</Project>
       <Name>Business Logic Layer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805221235562_Users.resx">
+      <DependentUpon>201805221235562_Users.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

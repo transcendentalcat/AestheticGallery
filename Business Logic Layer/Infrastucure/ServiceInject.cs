@@ -1,4 +1,5 @@
-﻿using Data_Access_Layer.Interfaces;
+﻿using Data_Access_Layer.Identity.Repositories;
+using Data_Access_Layer.Interfaces;
 using Data_Access_Layer.Repositories;
 using Ninject.Modules;
 using System;
@@ -19,7 +20,7 @@ namespace BusinessLogicLayer.Infrastucure
         public override void Load()
         {
             Bind<IUnitOfWork>().To<EFUnitOfWork>().WithConstructorArgument(connectionString);
-
+            Bind<IUnitOfWorkIdentity>().To<IdentityUnitOfWork>().WithConstructorArgument(connectionString);
         }
     }
 }
