@@ -6,7 +6,7 @@ namespace AestheticGallery.Models.ViewModels
 {
     public class ClientProfileViewModel
     {
-        public int ClientProfileID { get; set; }
+        public string ClientProfileID { get; set; }
 
         public string Name { get; set; }
 
@@ -16,5 +16,11 @@ namespace AestheticGallery.Models.ViewModels
         [Display(Name="Дата создания")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
         public DateTime ProfileCreatedDate { get; set; }
+
+        public string Email { get; set; }
+
+        public string UserName { get; set; }
+
+        public string Role { get; set; }
     }
 }

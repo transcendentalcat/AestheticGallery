@@ -19,6 +19,6 @@ namespace AestheticGallery.Models.ViewModels
         [DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
 
-        public int ClientProfileID { get; set; }
+        public string ClientProfileID { get; set; }
     }   
 }
