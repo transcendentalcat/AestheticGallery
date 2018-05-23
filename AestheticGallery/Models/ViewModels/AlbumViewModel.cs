@@ -8,14 +8,15 @@ namespace AestheticGallery.Models.ViewModels
     {
         public int AlbumID { get; set; }
 
-        [Required]
+        [DisplayName("Название альбома")]
         public string Title { get; set; }
 
+        [DisplayName("Описание")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [DataType(DataType.DateTime)]
-        [DisplayName("ДАта создания")]
+        [DisplayName("Дaта создания")]
         [DisplayFormat(DataFormatString = "{0:dd/MM/yy}", ApplyFormatInEditMode = true)]
         public DateTime CreatedDate { get; set; }
 

@@ -12,12 +12,12 @@ namespace AestheticGallery.Models.ViewModels
         [DisplayName("Название")]
         public string Title { get; set; }
 
-        [DisplayName("Фотограифия")]
+        [DisplayName("Фотография")]
         [MaxLength]
         public byte[] PhotoFile { get; set; }
 
         public string ImageMimeType { get; set; }
-
+        [DisplayName("Описание")]
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 

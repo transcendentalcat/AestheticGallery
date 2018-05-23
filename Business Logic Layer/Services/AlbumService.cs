@@ -58,8 +58,7 @@ namespace BusinessLogicLayer.Services
                 Title = item.Title,
                 Description = item.Description,
                 ClientProfileID = client.ClientProfileID,
-                ClientProfile = client,
-                Photos = Mapper.Map<ICollection<PhotoDto>, ICollection<Photo>>(item.P)
+                ClientProfile = client
             };
 
             db.Albums.Create(newAlbum);

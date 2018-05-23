@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -8,7 +9,9 @@ namespace AestheticGallery.Models.ViewModels
     {
         public string ClientProfileID { get; set; }
 
+        [DisplayName("Имя пользователя")]
         public string Name { get; set; }
+
 
         public string Password { get; set; }
 

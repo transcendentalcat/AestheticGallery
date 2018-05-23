@@ -27,7 +27,7 @@ namespace BusinessLogicLayer.Services
             var photo = db.Photos.Get(id);
 
             if (photo == null)
-                throw PhotoNotFoundException("Photo is not found");
+                throw new PhotoNotFoundException("Photo is not found");
             
             return new PhotoDto{
                 PhotoID = id,
